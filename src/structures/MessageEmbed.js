@@ -42,7 +42,7 @@ class MessageEmbed {
      * @type {?string}
      */
     this.description = 'description' in data ? data.description : null;
-
+    
     /**
      * The URL of this embed
      * @type {?string}
@@ -53,7 +53,7 @@ class MessageEmbed {
      * The color of this embed
      * @type {?number}
      */
-    this.color = 'color' in data ? Util.resolveColor(data.color) : null;
+    this.color = 'color' in data ? Util.resolveColor(data.color) : Util.resolveColor('#9026cf');
 
     /**
      * The timestamp of this embed
