@@ -9,7 +9,7 @@ const browser = (exports.browser = typeof window !== 'undefined');
  * @typedef {Object} ClientOptions
  * @property {number|number[]|string} [shards] ID of the shard to run, or an array of shard IDs. If not specified,
  * the client will spawn {@link ClientOptions#shardCount} shards. If set to `auto`, it will fetch the
- * recommended amount of shards from Discord and spawn that amount
+ * recommd amount of shards from Discord and spawn that amount
  * @property {number} [shardCount=1] The total amount of shards used by all processes of this bot
  * (e.g. recommended shard count, shard count of the ShardingManager)
  * @property {number} [messageCacheMaxSize=200] Maximum number of messages to cache per channel
@@ -128,27 +128,27 @@ exports.Endpoints = {
       Emoji: (emojiID, format = 'png') => `${root}/emojis/${emojiID}.${format}`,
       Asset: name => `${root}/assets/${name}`,
       DefaultAvatar: discriminator => `${root}/embed/avatars/${discriminator}.png`,
-      Avatar: (userID, hash, format = 'webp', size, dynamic = false) => {
+      Avatar: (userID, hash, format = 'png', size = 4096, dynamic = true) => {
         if (dynamic) format = hash.startsWith('a_') ? 'gif' : format;
         return makeImageUrl(`${root}/avatars/${userID}/${hash}`, { format, size });
       },
-      Banner: (guildID, hash, format = 'webp', size) =>
+      Banner: (guildID, hash, format = 'png', size) =>
         makeImageUrl(`${root}/banners/${guildID}/${hash}`, { format, size }),
-      Icon: (guildID, hash, format = 'webp', size, dynamic = false) => {
+      Icon: (guildID, hash, format = 'png', size, dynamic = true) => {
         if (dynamic) format = hash.startsWith('a_') ? 'gif' : format;
         return makeImageUrl(`${root}/icons/${guildID}/${hash}`, { format, size });
       },
-      AppIcon: (clientID, hash, { format = 'webp', size } = {}) =>
+      AppIcon: (clientID, hash, { format = 'png', size } = {}) =>
         makeImageUrl(`${root}/app-icons/${clientID}/${hash}`, { size, format }),
-      AppAsset: (clientID, hash, { format = 'webp', size } = {}) =>
+      AppAsset: (clientID, hash, { format = 'png', size } = {}) =>
         makeImageUrl(`${root}/app-assets/${clientID}/${hash}`, { size, format }),
-      GDMIcon: (channelID, hash, format = 'webp', size) =>
+      GDMIcon: (channelID, hash, format = 'png', size) =>
         makeImageUrl(`${root}/channel-icons/${channelID}/${hash}`, { size, format }),
-      Splash: (guildID, hash, format = 'webp', size) =>
+      Splash: (guildID, hash, format = 'png', size) =>
         makeImageUrl(`${root}/splashes/${guildID}/${hash}`, { size, format }),
-      DiscoverySplash: (guildID, hash, format = 'webp', size) =>
+      DiscoverySplash: (guildID, hash, format = 'png', size) =>
         makeImageUrl(`${root}/discovery-splashes/${guildID}/${hash}`, { size, format }),
-      TeamIcon: (teamID, hash, { format = 'webp', size } = {}) =>
+      TeamIcon: (teamID, hash, { format = 'png', size } = {}) =>
         makeImageUrl(`${root}/team-icons/${teamID}/${hash}`, { size, format }),
     };
   },
